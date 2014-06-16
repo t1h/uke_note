@@ -1,0 +1,87 @@
+h1.title{
+  text-align: center;
+}
+h1.header{
+  text-align: center;
+  background-color:#795621;
+  height: 158px;
+  width: 100%;
+  background-image:url("header1.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  margin-top: 0px;
+}
+div.right{
+  text-align: right;
+}
+div.chord{
+  float: left;
+  padding-right: 10px;
+}
+div.line {
+  clear: both;
+  padding-bottom: 10px;
+}
+div.newline {
+  clear: both;
+  padding-top: 30px;
+}
+
+.form_std {
+  width: 98%;
+  border: solid 1px #000000;
+  border-radius:5px 5px 5px 5px / 5px 5px 5px 5px;
+}
+
+.btn_std {
+  width: 98%;
+  border: solid 2px #cccccc;
+  color: #555555;
+  background-color: #cceeff;
+  border-radius:10px 10px 10px 10px / 10px 10px 10px 10px;
+  font-size: large;
+}
+
+ .main_pain {
+  float: left;
+  text-align: center;
+  width: 100%;
+  border: solid 1px #000000;
+  border-radius:0px 0px 10px 10px / 0px 0px 10px 10px;
+ }
+
+ .main_contents {
+  float: left;
+  text-align: left;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: solid 0px #000000;
+ }
+ 
+ .comment {
+  font-size: x-small;
+  color: #888888;
+  margin-left: 20px;
+  width: 80%;  
+  border: solid 0px #000000;
+
+ }
+ 
+ .comment1 {
+  font-size: small;
+  color: #555555;
+  margin-left: 20px;
+  width: 80%;  
+  border: solid 0px #000000;
+
+ }
+
+ ul.comment1 {
+  line-height: 150%;
+ }
+ 
+ .title1 {
+  color: #555555;
+ }
