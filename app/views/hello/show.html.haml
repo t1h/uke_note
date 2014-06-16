@@ -1,18 +1,18 @@
 %link{rel: "stylesheet",type: "text/css", href: "style.css"}
 
 %h1 aaaa
-%p
-  - hello = "world"
-  %b
-    = hello
+
+- s = Chordpro::Parser.new.parse("[C]もしもし [G7]かめよ")
+- def chord_image(chord)
+  - "./chord/C.png"
 
 %div{class: 'line'}
   %div{class: 'chord'}
-    %img{src: './chord/C.png', alt: 'C'}
+    %img{src: chord_image(s[:song][0][:line][0][:chord]), alt: s[:song][0][:line][0][:chord]}
     %br
-    C
+    = s[:song][0][:line][0][:chord]
     %br
-    もしもし
+    = s[:song][0][:line][1][:lyric]
   %div{class: 'chord'}
     %img{src: './chord/C.png', alt: 'G7'}
     %br
