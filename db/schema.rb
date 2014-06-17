@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616050910) do
+ActiveRecord::Schema.define(version: 20140617051316) do
 
   create_table "chords", force: true do |t|
     t.text     "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.text     "memo"
   end
 
 end

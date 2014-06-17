@@ -10,7 +10,6 @@ class ChordsController < ApplicationController
   # GET /chords/1
   # GET /chords/1.json
   def show
-    p @chord.contents
   end
 
   # GET /chords/new
@@ -70,6 +69,6 @@ class ChordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chord_params
-      params.require(:chord).permit(:contents)
+      params.require(:chord).permit(:contents, :title, :memo)
     end
 end
