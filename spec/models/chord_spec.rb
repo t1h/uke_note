@@ -46,5 +46,11 @@ describe Chord do
       expect(pairs[0][3][:lyric]).to eq "よ"
       expect(pairs[1][0][:chord]).to eq "C"
     end
+    it "directive があってもエラーにならない" do
+      s = Chordpro::Parser.new.parse("{title:うさぎとかめ}\nもしもし[G7]かめよ[Am]かめさん[C]よ")
+
+      pairs = Chord.make_chord_lyric_pairs(s)
+      expect(pairs[0][0][:lyric]).to eq "もしもし"
+    end
   end
 end

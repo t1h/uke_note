@@ -1,0 +1,21 @@
+%link{rel: "stylesheet",type: "text/css", href: "/style.css"}
+
+%p#notice
+  = notice
+
+- @parsed_contents.each do |line|
+  %div{class: 'line'}
+    - line.each do |contents|
+
+      %div{class: 'chord'}      
+        %img{src: chord_image(contents[:chord]), alt: contents[:chord]}
+        %br
+        = contents[:chord]
+        %br
+        = contents[:lyric]
+
+
+%br
+
+= link_to 'Edit', edit_chord_path(@chord) |
+= link_to 'Back', chords_path

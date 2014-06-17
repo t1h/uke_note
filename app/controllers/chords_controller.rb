@@ -10,6 +10,7 @@ class ChordsController < ApplicationController
   # GET /chords/1
   # GET /chords/1.json
   def show
+    @parsed_contents = Chord.make_chord_lyric_pairs(Chordpro::Parser.new.parse(@chord.contents))
   end
 
   # GET /chords/new
