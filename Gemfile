@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 gem 'sass-rails', '~> 4.0.2'
 gem 'bootstrap-sass', '~> 3.1.1'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -37,9 +35,6 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
@@ -52,6 +47,9 @@ gem 'squeel'
 gem 'devise'
 
 gem 'chordpro'
+group :test, :development do
+  gem 'sqlite3'
+end
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
@@ -59,4 +57,13 @@ group :test do
   gem "capybara", "~> 2.1.0"
   gem "database_cleaner", "~> 1.0.1"
   gem "launchy"
+end
+group :production, :staging do
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'newrelic_rpm'
+end
+
+platforms :ruby do # linux
+  gem 'unicorn'
 end

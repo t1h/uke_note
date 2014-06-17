@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-UkeNote::Application.config.secret_key_base = '85be56058b7fc117672d64eaebc72503ddd9f46b2eb25587cfb7d4dca926fc5a61f468660c9cdfa49cd7ad7a85dbedf5967dc66a73530e205554626f8fa4af35'
+UkeNote::Application.config.secret_key_base = ENV['UKE_NOTE_SECRET_KEY']
