@@ -199,6 +199,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   newrelic_rpm
+  nokogiri
   pg
   rails (= 4.0.4)
   rails_12factor

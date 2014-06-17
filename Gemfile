@@ -47,6 +47,7 @@ gem 'squeel'
 gem 'devise'
 
 gem 'chordpro'
+gem 'nokogiri'
 group :test, :development do
   gem 'sqlite3'
 end
