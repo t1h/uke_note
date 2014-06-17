@@ -1,6 +1,9 @@
 class Chord < ActiveRecord::Base
   belongs_to :user
 
+  validates :title, presence: true
+  validates :contents, presence: true
+
   def self.make_chord_lyric_pairs(song)
     lines = []
     song[:song].each{|l|

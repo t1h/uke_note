@@ -1,0 +1,19 @@
+
+= simple_form_for @chord, :html => {:class => 'form-horizontal' } do |f|
+  - if @chord.errors.any? 
+    %div#error_explanation
+      %h2
+        = pluralize(@chord.errors.count, "error")
+        prohibited this chord from being saved:
+
+      %ul
+        - @chord.errors.full_messages.each do |msg|
+          %li
+            = msg
+
+  %div.field
+    = f.input :title
+    = f.input :contents, :input_html => { :cols => 100, :rows => 10 }
+    = f.input :memo, :input_html => { :cols => 100, :rows => 5 }
+  %div.actions
+    = f.submit
