@@ -1,4 +1,5 @@
 class Chord < ActiveRecord::Base
+  belongs_to :user
 
   def self.make_chord_lyric_pairs(song)
     lines = []

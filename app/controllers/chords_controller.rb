@@ -1,10 +1,12 @@
 class ChordsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_current_user!, only: [:show, :edit, :update, :destroy]
   before_action :set_chord, only: [:show, :edit, :update, :destroy]
 
   # GET /chords
   # GET /chords.json
   def index
-    @chords = Chord.all
+    @chords = current_user.chords
   end
 
   # GET /chords/1
@@ -25,7 +27,7 @@ class ChordsController < ApplicationController
   # POST /chords
   # POST /chords.json
   def create
-    @chord = Chord.new(chord_params)
+    @chord = Chord.new(chord_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @chord.save
@@ -71,5 +73,15 @@ class ChordsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def chord_params
       params.require(:chord).permit(:contents, :title, :memo)
+    end
+
+    def authenticate_current_user!
+      chord = Chord.find(params[:id])
+      if user_signed_in? && current_user.id == chord.user_id
+        true
+      else
+        redirect_to root_url
+        false
+      end
     end
 end
