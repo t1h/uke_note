@@ -25,4 +25,24 @@ describe ChordsHelper do
       expect(chord_image("Bm/F")).to eq "/chord/BmonF.png"
     end
   end
+  context "コードを移調する" do
+    it "移調なし" do
+      expect(transpose_chord("C", 0)).to eq "C"
+    end
+    it "+1 する" do
+      expect(transpose_chord("C", 1)).to eq "C#"
+    end
+    it "-1 する" do
+      expect(transpose_chord("C", -1)).to eq "B"
+    end
+    it "コードの配列の右端から+1" do
+      expect(transpose_chord("B", 1)).to eq "C"
+    end
+    it "コードの配列の右端を越えて+5" do
+      expect(transpose_chord("Bb", 5)).to eq "Eb"
+    end
+    it "コードの配列の左端を越えて-5" do
+      expect(transpose_chord("C#", -5)).to eq "G#"
+    end
+  end
 end
