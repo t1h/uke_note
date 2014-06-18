@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617074556) do
+ActiveRecord::Schema.define(version: 20140618060137) do
 
   create_table "chords", force: true do |t|
     t.text     "contents"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20140617074556) do
   end
 
   add_index "chords", ["user_id"], name: "index_chords_on_user_id"
+
+  create_table "transpositions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "chord_id"
+    t.integer  "key",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "transpositions", ["chord_id"], name: "index_transpositions_on_chord_id"
+  add_index "transpositions", ["user_id"], name: "index_transpositions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

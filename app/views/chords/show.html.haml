@@ -3,14 +3,26 @@
 %p#notice
   = notice
 
+%ul.pagination
+  %li
+    = link_to('-', change_chord_transposition_path(params[:id], -1), :method=>'post')
+  %li.active
+    %a{href: '#'}
+      = @key
+  %li
+    = link_to('+', change_chord_transposition_path(params[:id], 1), :method=>'post')
+
+%h1
+  = @chord.title
+
 - @parsed_contents.each do |line|
   %div{class: 'line'}
     - line.each do |contents|
 
       %div{class: 'chord'}      
-        %img{src: chord_image(contents[:chord]), alt: contents[:chord]}
+        %img{src: chord_image(transpose_chord(contents[:chord], @key)), alt: transpose_chord(contents[:chord], @key)}
         %br
-        = contents[:chord]
+        = transpose_chord(contents[:chord], @key)
         %br
         = contents[:lyric]
 

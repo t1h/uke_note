@@ -30,7 +30,7 @@ describe ChordsHelper do
       expect(transpose_chord("C", 0)).to eq "C"
     end
     it "+1 する" do
-      expect(transpose_chord("C", 1)).to eq "C#"
+      expect(transpose_chord("C", 1)).to eq "Db"
     end
     it "-1 する" do
       expect(transpose_chord("C", -1)).to eq "B"
@@ -42,7 +42,13 @@ describe ChordsHelper do
       expect(transpose_chord("Bb", 5)).to eq "Eb"
     end
     it "コードの配列の左端を越えて-5" do
-      expect(transpose_chord("C#", -5)).to eq "G#"
+      expect(transpose_chord("C#", -5)).to eq "Ab"
+    end
+    it "コードネームの変換" do
+      expect(transpose_chord("Csus", 1)).to eq "Dbsus"
+    end
+    it "オンコードの変換" do
+      expect(transpose_chord("B/F", 1)).to eq "C/Gb"
     end
   end
 end

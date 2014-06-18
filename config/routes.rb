@@ -1,6 +1,10 @@
 UkeNote::Application.routes.draw do
   devise_for :users
-  resources :chords
+  resources :chords do
+    resource :transposition, :only => [] do
+      post ':key' => 'transpositions#change', as: :change
+    end
+  end
 
   root 'chords#index'
 
