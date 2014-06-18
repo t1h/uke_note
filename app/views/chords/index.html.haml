@@ -1,25 +1,19 @@
 %h1 コード一覧
 
-%table
+= link_to 'New Chord', new_chord_path
+
+%table.table.table-bordered.table-striped
   %thead
     %tr
       %th タイトル
       %th 更新日
       %th
-      %th
-
   %tbody
     - @chords.each do |chord|
       %tr
         %td
-          = chord.title
+          = link_to chord.title, chord
         %td
           = l chord.updated_at
         %td
-          = link_to 'Show', chord
-        %td
-          = link_to 'Destroy', chord, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Chord', new_chord_path
+          = link_to '削除', chord, method: :delete, data: { confirm: 'Are you sure?' }
