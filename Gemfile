@@ -51,6 +51,9 @@ gem 'transpose_chords'
 gem 'nokogiri'
 group :test, :development do
   gem 'sqlite3'
+  gem 'letter_opener'
+  gem "spring"
+  gem "spring-commands-rspec"
 end
 group :test do
   gem 'rspec-rails'
