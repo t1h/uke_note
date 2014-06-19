@@ -1,9 +1,9 @@
 module ChordsHelper
   def chord_image(chord)
-    if chord.nil?
-      "/chord/blank.png"
+    if chord.nil? || chord == ''
+      image_tag "chords/blank.png"
     else
-      "/chord/" + chord.to_s.gsub('#', 's').gsub('/', 'on') + ".png"
+      image_tag "chords/" + chord.to_s.gsub('#', 's').gsub('/', 'on') + ".png"
     end
   end
 

@@ -1,16 +1,24 @@
-%link{rel: "stylesheet",type: "text/css", href: "/style.css"}
-
 %p#notice
   = notice
 
 %ul.pagination
-  %li
-    = link_to('-', change_chord_transposition_path(params[:id], -1), :method=>'post')
+  - if @key <= -5
+    %li.disabled
+      %a{href: "#"}
+        \-
+  - else
+    %li
+      = link_to('-', change_chord_transposition_path(params[:id], -1), :method=>'post')
   %li.active
     %a{href: '#'}
       = @key
-  %li
-    = link_to('+', change_chord_transposition_path(params[:id], 1), :method=>'post')
+  - if @key >= 5
+    %li.disabled
+      %a{href: "#"}
+        +
+  - else
+    %li
+      = link_to('+', change_chord_transposition_path(params[:id], 1), :method=>'post')
 
 %h1
   = @chord.title
@@ -20,7 +28,7 @@
     - line.each do |contents|
 
       %div{class: 'chord'}      
-        %img{src: chord_image(transpose_chord(contents[:chord], @key)), alt: transpose_chord(contents[:chord], @key)}
+        = chord_image(transpose_chord(contents[:chord], @key))
         %br
         = transpose_chord(contents[:chord], @key)
         %br
