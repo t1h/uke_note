@@ -38,7 +38,7 @@ class ChordsController < ApplicationController
 
     respond_to do |format|
       if @chord.save
-        format.html { redirect_to @chord, notice: 'Chord was successfully created.' }
+        format.html { redirect_to @chord, notice: 'コードを作成しました' }
         format.json { render action: 'show', status: :created, location: @chord }
       else
         format.html { render action: 'new' }
@@ -52,7 +52,7 @@ class ChordsController < ApplicationController
   def update
     respond_to do |format|
       if @chord.update(chord_params)
-        format.html { redirect_to @chord, notice: 'Chord was successfully updated.' }
+        format.html { redirect_to @chord, notice: 'コードを更新しました' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

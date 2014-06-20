@@ -19,7 +19,6 @@
             %li
               %a{:href => root_url}
                 ホーム
-
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right
               %li.dropdown
@@ -35,9 +34,7 @@
       / container
     / navbar
 
-    %p.notice
-      = notice
-    %p.alert
-      = alert
     .container
+      = render partial: "shared/flash_messages", flash: flash
+
       = yield

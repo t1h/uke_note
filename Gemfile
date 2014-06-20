@@ -45,11 +45,12 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'squeel'
 gem 'devise'
-
+gem 'rails-i18n'
 gem 'chordpro'
 gem 'transpose_chords', '= 0.0.4', github: 'patchfx/transpose_chords'
 gem 'nokogiri'
 group :test, :development do
+  gem 'i18n_generators'
   gem 'sqlite3'
   gem 'letter_opener'
   gem "spring"

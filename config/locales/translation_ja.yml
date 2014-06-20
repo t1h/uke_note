@@ -1,0 +1,35 @@
+ja:
+  activerecord:
+    models:
+      chord: "コード"  #g
+      transposition: "移調"  #g
+      user: "ユーザ"  #g
+
+    attributes:
+      chord:
+        contents: "内容"  #g
+        memo: "メモ"  #g
+        title: "タイトル"  #g
+        user: :activerecord.models.user  #g
+
+      transposition:
+        chord: :activerecord.models.chord  #g
+        key: "キー"  #g
+        user: :activerecord.models.user  #g
+
+      user:
+        chords: "コード"  #g
+        current_sign_in_at: current_sign_in_at  #g
+        current_sign_in_ip: current_sign_in_ip  #g
+        email: "Eメール"  #g
+        encrypted_password: encrypted_password  #g
+        last_sign_in_at: last_sign_in_at  #g
+        last_sign_in_ip: last_sign_in_ip  #g
+        remember_created_at: remember_created_at  #g
+        reset_password_sent_at: reset_password_sent_at  #g
+        reset_password_token: reset_password_token  #g
+        transpositions: "移調"  #g
+        password_confirmation: "パスワード確認"
+        current_password: "現在のパスワード"
+        remember_me: "ブラウザに保存する"
+        password: "パスワード"
