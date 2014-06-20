@@ -47,7 +47,7 @@ gem 'squeel'
 gem 'devise'
 
 gem 'chordpro'
-gem 'transpose_chords'
+gem 'transpose_chords', '= 0.0.4', github: 'patchfx/transpose_chords'
 gem 'nokogiri'
 group :test, :development do
   gem 'sqlite3'

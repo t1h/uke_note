@@ -13,16 +13,16 @@ require 'spec_helper'
 describe ChordsHelper do
   context "chord_image は与えられたコードの画像URLを戻す" do
     it "通常コード" do
-      expect(chord_image("C")).to eq "/chord/C.png"
+      expect(chord_image("C")).to eq '<img alt="C" src="/images/chords/C.png" />'
     end
     it "コードなし" do
-      expect(chord_image(nil)).to eq "/chord/blank.png"
+      expect(chord_image(nil)).to eq '<img alt="" src="/images/chords/blank.png" />'
     end
     it "#を含むコード" do
-      expect(chord_image("G#")).to eq "/chord/Gs.png"
+      expect(chord_image("G#")).to eq '<img alt="G#" src="/images/chords/Gs.png" />'
     end
     it "onコード" do
-      expect(chord_image("Bm/F")).to eq "/chord/BmonF.png"
+      expect(chord_image("Bm/F")).to eq '<img alt="Bm/F" src="/images/chords/BmonF.png" />'
     end
   end
   context "コードを移調する" do

@@ -13,7 +13,13 @@ class ChordsController < ApplicationController
   # GET /chords/1.json
   def show
     @parsed_contents = Chord.make_chord_lyric_pairs(Chordpro::Parser.new.parse(@chord.contents))
-    @key = current_user.transpositions.find_by_chord_id(params[:id]).key || 0
+    chord = current_user.transpositions.find_by_chord_id(params[:id])
+    if chord.nil?
+      @key = 0
+    else
+      @key = chord.key
+    end
+
   end
 
   # GET /chords/new

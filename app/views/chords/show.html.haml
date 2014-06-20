@@ -1,24 +1,21 @@
 %p#notice
   = notice
 
-%ul.pagination
-  - if @key <= -5
-    %li.disabled
-      %a{href: "#"}
-        \-
-  - else
-    %li
-      = link_to('-', change_chord_transposition_path(params[:id], -1), :method=>'post')
-  %li.active
-    %a{href: '#'}
-      = @key
-  - if @key >= 5
-    %li.disabled
-      %a{href: "#"}
-        +
-  - else
-    %li
-      = link_to('+', change_chord_transposition_path(params[:id], 1), :method=>'post')
+%ul.nav.nav-pills.navbar-right
+  %li
+    %p.navbar-text.navbar-right
+
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+      移調:
+      = @key == 0 ? 0 : sprintf("%+d", @key)
+      %span.caret
+    %ul.dropdown-menu
+      - Array(-5 .. 5).reverse_each do |i|
+        %li
+          = link_to(i == 0 ? 0 : sprintf("%+d", i), select_chord_transposition_path(params[:id], i), :method=>'post')
+  %li
+    = link_to '編集する', edit_chord_path(@chord)
 
 %h1
   = @chord.title
@@ -27,7 +24,7 @@
   %div{class: 'line'}
     - line.each do |contents|
 
-      %div{class: 'chord'}      
+      %div{class: 'chord'}
         = chord_image(transpose_chord(contents[:chord], @key))
         %br
         = transpose_chord(contents[:chord], @key)
@@ -35,7 +32,3 @@
         = contents[:lyric]
 
 
-%br
-
-= link_to '編集する', edit_chord_path(@chord) |
-= link_to '一覧へ戻る', chords_path
