@@ -8,13 +8,7 @@ class ChordsController < ApplicationController
 
   def show
     @parsed_contents = Chord.make_chord_lyric_pairs(Chordpro::Parser.new.parse(@chord.contents))
-    chord = current_user.transpositions.find_by_chord_id(params[:id])
-    if chord.nil?
-      @key = 0
-    else
-      @key = chord.key
-    end
-
+    @key = @chord.key_by_user(current_user)
   end
 
   def new
