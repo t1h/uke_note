@@ -7,7 +7,7 @@ class ChordsController < ApplicationController
   end
 
   def show
-    @parsed_contents = Chord.make_chord_lyric_pairs(Chordpro::Parser.new.parse(@chord.contents))
+    @parsed_contents = @chord.parsed_contents
     @key = @chord.key_by_user(current_user)
   end
 

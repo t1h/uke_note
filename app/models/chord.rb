@@ -37,4 +37,8 @@ class Chord < ActiveRecord::Base
     transposition = self.transpositions.find_by_user_id(user)
     transposition.try(:key) || 0
   end
+
+  def parsed_contents
+    self.class.make_chord_lyric_pairs(Chordpro::Parser.new.parse(self.contents))
+  end
 end
