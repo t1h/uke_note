@@ -1,6 +1,5 @@
 class ChordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_current_user!, only: [:show, :edit, :update, :destroy]
   before_action :set_chord, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,14 +18,14 @@ class ChordsController < ApplicationController
   end
 
   def new
-    @chord = Chord.new
+    @chord = current_user.chords.build
   end
 
   def edit
   end
 
   def create
-    @chord = Chord.new(chord_params.merge(user_id: current_user.id))
+    @chord = current_user.chords.build(chord_params)
 
     respond_to do |format|
       if @chord.save
@@ -61,20 +60,10 @@ class ChordsController < ApplicationController
 
   private
     def set_chord
-      @chord = Chord.find(params[:id])
+      @chord = current_user.chords.find(params[:id])
     end
 
     def chord_params
       params.require(:chord).permit(:contents, :title, :memo)
-    end
-
-    def authenticate_current_user!
-      chord = Chord.find(params[:id])
-      if user_signed_in? && current_user.id == chord.user_id
-        true
-      else
-        redirect_to root_url
-        false
-      end
     end
 end
