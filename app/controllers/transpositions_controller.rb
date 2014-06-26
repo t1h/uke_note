@@ -1,12 +1,16 @@
 class TranspositionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_chord
 
   def select
-    current_transposition = current_user.transpositions.find_by_chord_id(params[:chord_id])
-    current_transposition ||= Transposition.new(user_id: current_user.id, chord_id: params[:chord_id])
-    current_transposition.key = params[:key].to_i
-    current_transposition.save
+    transposition = @chord.transpositions.find_or_initialize_by(user: current_user)
+    transposition.key = params[:key]
+    transposition.save!
 
     redirect_to chord_path(params[:chord_id])
+  end
+
+  private
+  def set_chord
+    @chord = current_user.chords.find(params[:chord_id])
   end
 end
