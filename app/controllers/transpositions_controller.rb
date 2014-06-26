@@ -6,7 +6,7 @@ class TranspositionsController < ApplicationController
     transposition.key = params[:key]
     transposition.save!
 
-    redirect_to chord_path(params[:chord_id])
+    redirect_to @chord
   end
 
   private
