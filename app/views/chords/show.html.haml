@@ -17,7 +17,7 @@
 %h1
   = @chord.title
 
-- @parsed_contents.each do |line|
+- @chord.parsed_contents.each do |line|
   %div{class: 'line'}
     - line.each do |contents|
 
@@ -27,5 +27,3 @@
         = transpose_chord(contents[:chord], @key)
         %br
         = contents[:lyric]
-
-

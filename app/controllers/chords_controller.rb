@@ -7,7 +7,6 @@ class ChordsController < ApplicationController
   end
 
   def show
-    @parsed_contents = @chord.parsed_contents
     @key = @chord.key_by_user(current_user)
   end
 
