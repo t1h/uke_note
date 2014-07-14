@@ -5,27 +5,25 @@
   %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
       移調:
-      = @key == 0 ? 0 : sprintf("%+d", @key)
+      = key_sign(@key)
       %span.caret
     %ul.dropdown-menu
-      - Array(-5 .. 5).reverse_each do |i|
+      - (-5..5).reverse_each do |i|
         %li
-          = link_to(i == 0 ? 0 : sprintf("%+d", i), select_chord_transposition_path(params[:id], i), :method=>'post')
+          = link_to(key_sign(i), select_chord_transposition_path(params[:id], i), :method=>'post')
   %li
     = link_to '編集する', edit_chord_path(@chord)
 
 %h1
   = @chord.title
 
-- @parsed_contents.each do |line|
-  %div{class: 'line'}
+- @chord.parsed_contents.each do |line|
+  .line
     - line.each do |contents|
-
-      %div{class: 'chord'}
-        = chord_image(transpose_chord(contents[:chord], @key))
+      - transposed_key = transpose_chord(contents[:chord], @key)
+      .chord
+        = chord_image(transposed_key)
         %br
-        = transpose_chord(contents[:chord], @key)
+        = transposed_key
         %br
         = contents[:lyric]
-
-
