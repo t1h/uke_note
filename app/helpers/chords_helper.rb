@@ -8,7 +8,11 @@ module ChordsHelper
   end
 
   def transpose_chord(chord, number)
-    chords = TransposeChords::Chord.transpose([chord.to_s]).capo(number)
-    chords[0] unless chords.nil?
+    begin
+      chords = TransposeChords::Chord.transpose([chord.to_s]).capo(number)
+      chords[0] unless chords.nil?
+    rescue => error
+      nil
+    end
   end
 end
