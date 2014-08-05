@@ -17,17 +17,4 @@ feature 'Transposition management' do
     #page.driver.post('/chords/1/transposition/-5')
     expect(page).to have_content /移調: \-5/
   end
-
-  scenario "+5〜-5の範囲外へは移調できない" do
-    user = create(:user)
-    login_as(user, :scope => :user)
-    chord = create(:chord)
-
-    visit chord_path(chord)
-    expect(page).to have_content /移調: 0/
-    page.driver.post('/chords/1/transposition/6')
-    expect(page).to have_content /移調: 0/
-    page.driver.post('/chords/1/transposition/-6')
-    expect(page).to have_content /移調: 0/
-  end
 end

@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :chords
-  has_many :transpositions
-  accepts_nested_attributes_for :chords
+  has_many :chord_settings
+  accepts_nested_attributes_for :chords, :chord_settings
 end

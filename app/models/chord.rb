@@ -1,6 +1,6 @@
 class Chord < ActiveRecord::Base
   belongs_to :user
-  has_many :transpositions
+  has_many :chord_settings
 
   validates :title, presence: true
   validates :contents, presence: true
@@ -34,8 +34,8 @@ class Chord < ActiveRecord::Base
   end
 
   def key_by_user(user)
-    transposition = self.transpositions.find_by_user_id(user)
-    transposition.try(:key) || 0
+    chord_setting = self.chord_settings.find_by_user_id(user)
+    chord_setting.try(:key) || 0
   end
 
   def parsed_contents

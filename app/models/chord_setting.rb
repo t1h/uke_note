@@ -1,4 +1,4 @@
-class Transposition < ActiveRecord::Base
+class ChordSetting < ActiveRecord::Base
   belongs_to :user
   belongs_to :chord
 
