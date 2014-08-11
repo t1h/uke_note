@@ -8,6 +8,13 @@ class TranspositionsController < ApplicationController
 
     redirect_to @chord
   end
+  def display_chord
+    chord_setting = @chord.chord_settings.find_or_initialize_by(user: current_user)
+    chord_setting.display_chord = params[:type]
+    chord_setting.save!
+
+    redirect_to @chord
+  end
 
   private
     def set_chord

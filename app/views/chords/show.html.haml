@@ -5,12 +5,21 @@
   %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
       移調:
-      = key_sign(@key)
+      = key_sign(@chord_setting.key)
       %span.caret
     %ul.dropdown-menu
       - (-5..5).reverse_each do |i|
         %li
-          = link_to(key_sign(i), select_chord_transposition_path(params[:id], i), :method=>'post')
+          = link_to(key_sign(i), select_chord_chord_setting_path(params[:id], i), :method=>'post')
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+      押さえ方:
+      = ChordSetting::DISPLAY_TYPES[@chord_setting.display_chord]
+      %span.caret
+    %ul.dropdown-menu
+      - ChordSetting::DISPLAY_TYPES.each do |key, value|
+        %li
+          = link_to(value, display_chord_chord_chord_setting_path(params[:id], key), :method=>'post')
   %li
     = link_to '編集する', edit_chord_path(@chord)
 
@@ -20,9 +29,10 @@
 - @chord.parsed_contents.each do |line|
   .line
     - line.each do |contents|
-      - transposed_key = transpose_chord(contents[:chord], @key)
+      - transposed_key = transpose_chord(contents[:chord], @chord_setting.key)
       .chord
-        = chord_image(transposed_key)
+        - if @chord_setting.display_chord != 'blank' then
+          = chord_image(transposed_key)
         %br
         = transposed_key
         %br

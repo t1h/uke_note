@@ -33,11 +33,11 @@ class Chord < ActiveRecord::Base
     lines
   end
 
-  def key_by_user(user)
+  def chord_setting_by_user(user)
     chord_setting = self.chord_settings.find_by_user_id(user)
-    chord_setting.try(:key) || 0
+    chord_setting || ChordSetting.new
   end
-
+  
   def parsed_contents
     self.class.make_chord_lyric_pairs(Chordpro::Parser.new.parse(self.contents))
   end

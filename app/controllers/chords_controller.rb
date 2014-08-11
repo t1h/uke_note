@@ -7,7 +7,7 @@ class ChordsController < ApplicationController
   end
 
   def show
-    @key = @chord.key_by_user(current_user)
+    @chord_setting = @chord.chord_setting_by_user(current_user)
   end
 
   def new
