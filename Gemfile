@@ -45,6 +45,8 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'squeel'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'rails-i18n'
 gem 'chordpro'
 gem 'transpose_chords', '= 0.0.4', github: 'patchfx/transpose_chords'
@@ -57,6 +59,7 @@ group :test, :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem 'dotenv-rails'
+  gem 'hirb-unicode'
 end
 group :test do
   gem 'rspec-rails'

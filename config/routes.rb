@@ -1,5 +1,5 @@
 UkeNote::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :chords do
     resource :chord_setting, :only => [] do
       post 'key/:key' => 'transpositions#select', as: :select
