@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:twitter]
 
-  has_many :chords
-  has_many :chord_settings
+  has_many :chords, :dependent => :delete_all
+  has_many :chord_settings, :dependent => :delete_all
   accepts_nested_attributes_for :chords, :chord_settings
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
