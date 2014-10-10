@@ -1,8 +1,10 @@
-%h1 コード一覧
+%ul.nav.nav-pills.navbar-right
+  %li
+    %p.navbar-text.navbar-right
+      %a.btn.btn-default{:href => new_chord_path}
+        新規作成
 
-%nav.nav-pills.navbar-right
-  %a.btn.btn-default{:href => new_chord_path}
-    新規作成
+%h1 コード一覧
 
 %table.table.table-bordered.table-striped
   %thead
