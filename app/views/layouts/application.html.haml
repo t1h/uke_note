@@ -7,6 +7,7 @@
     = csrf_meta_tag
     %title
       = yield :html_title
+      UkeNote
   %body
 
     .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
@@ -14,15 +15,15 @@
         .navbar-header
           .navbar-brand
             = link_to("UkeNote", root_url, :class => "brand")
-        .collapse.navbar-collapse
-          %ul.nav.navbar-nav
-            %li
-              %a{:href => root_url}
-                ホーム
-          - if user_signed_in?
+        - if user_signed_in?
+          .collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              %li
+                %a.glyphicon.glyphicon-home{:href => root_url}
+                  ホーム
             %ul.nav.navbar-nav.navbar-right
               %li.dropdown
-                %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+                %a.dropdown-toggle.glyphicon.glyphicon-cog{:href => "#", "data-toggle" => "dropdown"}
                   設定
                   %b.caret
                 %ul.dropdown-menu
