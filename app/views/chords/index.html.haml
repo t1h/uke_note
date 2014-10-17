@@ -4,20 +4,19 @@
       %a.btn.btn-default{:href => new_chord_path}
         新規作成
 
-%h1 コード一覧
-
-%table.table.table-bordered.table-striped
-  %thead
-    %tr
-      %th タイトル
-      %th 更新日
-      %th
-  %tbody
-    - @chords.each do |chord|
+.table-responsive
+  %table.table.table-striped
+    %thead
       %tr
-        %td
-          = link_to chord.title, chord
-        %td
-          = l chord.updated_at
-        %td
-          = link_to '削除', chord, method: :delete, data: { confirm: 'Are you sure?' }
+        %th タイトル
+        %th 更新日
+        %th
+    %tbody
+      - @chords.each do |chord|
+        %tr
+          %td
+            = link_to chord.title, chord
+          %td.text-muted
+            = chord.updated_at.strftime("%Y-%m-%d %H:%M")
+          %td
+            = link_to '', chord, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-remove", "data-original-title" => "削除", rel: "tooltip"
